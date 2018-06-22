@@ -1,0 +1,19 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class TrinhdoModel extends Model {
+    public    $timestamps   = false;
+
+    protected $table        = 'trinhdo';
+    protected $fillable     = [
+        'TenTrinhDo',
+        'LastModify'
+    ];
+    protected $guarded      = ['MSTrinhDo'];
+
+    protected $primaryKey   = 'MSTrinhDo';
+    public    $incrementing = false;
+}
