@@ -10,6 +10,7 @@ class ChiNhanhModel extends Model
 
     protected $table = 'chinhanh';
     protected $fillable = [
+        'MSCN',
         'TenCN',
         'DiaChi',
         'SDT',
@@ -17,6 +18,7 @@ class ChiNhanhModel extends Model
         'MaTinh',
         'MaHuyen',
         'MaPhuong',
+        'TrangThai',
         'LastModify'
     ];
     protected $guarded = 'MSCN';

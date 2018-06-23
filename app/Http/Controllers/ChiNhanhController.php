@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class ChiNhanhController extends Controller
 {
@@ -58,24 +59,26 @@ class ChiNhanhController extends Controller
             return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
         $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
-        ChiNhanhModel::creat([
-            'MSCN' => $request->MSCN,
+        $MSCN = Controller::GUID();
+        ChiNhanhModel::create([
+            'MSCN' => $MSCN,
             'TenCN' => $request->TenCN,
             'DiaChi' => $request->DiaChi,
             'SDT' => $request->SDT,
             'MaTinh' => $request->MaTinh,
             'MaHuyen' => $request->MaHuyen,
             'MaPhuong' => $request->MaPhuong,
+            'TrangThai' => $request->TrangThai,
             'LastModify' => $now->toDateTimeString()
         ]);
         return ['status' => true, 'message' => 'Tạo chi nhánh thành công!'];
     }
 
-    public function sua_chinhanh($MSCN){
+    public function chinhsua_chinhanh($MSCN){
         $data = ChiNhanhModel::find($MSCN);
         if(isset($data)){
             return ['status' => true, 'data' => $data];
-//            return view('admin.editbranches', compact('data', $data));
+//            return view('admin.chinhanh.editbranches', compact('data', $data));
         }
         else{
             return ['status' => false, 'message' => ['Chi nhánh không tồn tại!']];
@@ -114,6 +117,7 @@ class ChiNhanhController extends Controller
                 'MaTinh' => $request->MaTinh,
                 'MaHuyen' => $request->MaHuyen,
                 'MaPhuong' => $request->MaPhuong,
+                'TrangThai' => $request->TrangThai,
                 'LastModiy' => $now->toDateTimeString()
             ]);
             return ['status' => true, 'message' => 'Đã cập nhật chi nhánh!'];
