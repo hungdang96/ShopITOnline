@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ChucVuModel;
+use App\NhanvienModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -56,7 +57,7 @@ class ChucVuController extends Controller
         }
     }
 
-    //Cập nhật chứ vụ
+    //Cập nhật chức vụ
     public function capnhat_chucvu($MSChucVu, Request $request){
         $validator = Validator::make($request->all(),[
             'MSChucVu' => 'required | unique:chucvu',
@@ -78,10 +79,17 @@ class ChucVuController extends Controller
         $TrangThai = $request->TrangThai;
         $LastModify = Controller::get_LastModify();
 
+        NhanvienModel::where('MSChucVu', $MSChucVu)
+            ->update([
+                'MSChucVu' => $MSChucVuNew
+            ]);
         ChucVuModel::where('MSChucVu',$MSChucVu)
             ->update([
                 'MSChucVu' => $MSChucVuNew,
-                'TenChucVu' => $TenChucVu
+                'TenChucVu' => $TenChucVu,
+                'TrangThai' => $TrangThai,
+                'LastModify' => $LastModify
             ]);
+        return ['status' => true, 'message' => 'Đã cập nhật chức vụ!'];
     }
 }

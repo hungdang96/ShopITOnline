@@ -72,19 +72,19 @@ Route::group(['prefix' => 'chuyennganh'],function (){
 //Trình độ
 Route::group(['prefix' => 'trinhdo'],function (){
     Route::get('create', function (){return view('admin.trinhdo.formcreate');})->name('createLevel');
-    Route::get('taomoi_trinhdo', 'TrinhDoController@taomoi_trinhdo')->name('insertLevel'); //Tạo nhân viên
+    Route::post('taomoi_trinhdo', 'TrinhDoController@taomoi_trinhdo')->name('insertLevel'); //Tạo nhân viên
     Route::get('danhsach_trinhdo', 'TrinhDoController@danhsach_trinhdo')->name('listLevel'); //Danh sách nhân viên
     Route::get('chinhsua_trinhdo/{IDNV}', 'TrinhDoController@chinhsua_trinhdo')->name('editLevel'); //Danh sách nhân viên
-    Route::get('capnhat_trinhdo/{IDNV}', 'TrinhDoController@capnhat_trinhdo')->name('updateLevel'); //Danh sách nhân viên
+    Route::post('capnhat_trinhdo/{IDNV}', 'TrinhDoController@capnhat_trinhdo')->name('updateLevel'); //Danh sách nhân viên
 });
 
 //Chức vụ
 Route::group(['prefix' => 'chucvu'],function (){
     Route::get('create', function (){return view('admin.chucvu.formcreate');})->name('createPosition');
-    Route::get('taomoi_chucvu', 'ChucVuController@taomoi_chucvu')->name('insertPosition'); //Tạo nhân viên
+    Route::post('taomoi_chucvu', 'ChucVuController@taomoi_chucvu')->name('insertPosition'); //Tạo nhân viên
     Route::get('danhsach_chucvu', 'ChucVuController@danhsach_chucvu')->name('listPosition'); //Danh sách nhân viên
     Route::get('chinhsua_chucvu/{IDNV}', 'ChucVuController@chinhsua_chucvu')->name('editPosition'); //Danh sách nhân viên
-    Route::get('capnhat_chucvu/{IDNV}', 'ChucVuController@capnhat_chucvu')->name('updatePosition'); //Danh sách nhân viên
+    Route::post('capnhat_chucvu/{IDNV}', 'ChucVuController@capnhat_chucvu')->name('updatePosition'); //Danh sách nhân viên
 });
 
 //Phòng ban
