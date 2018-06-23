@@ -44,6 +44,10 @@ class NhanvienController extends Controller
         if($request->DienThoai){
             $where[] = ['DienThoai', '=', $request->DienThoai];
         }
+        if($request->MSPhongBan){
+            $where[] = ['MSPhongBan', '=', $request->MSPhongBan];
+        }
+
         $data = NhanvienModel::select(DB::raw("Nhanvien.*, chuyennganh.TenChuyenNganh, trinhdo.TenTrinhDo, phongban.TenPhongBan, chucvu.TenChucVu"))
                 ->leftjoin('chuyennganh','chuyennganh.MSChuyenNganh','=','nhanvien.MSChuyenNganh')
                 ->leftjoin('trinhdo','trinhdo.MSTrinhDo','=','nhanvien.MSTrinhDo')

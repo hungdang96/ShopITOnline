@@ -72,10 +72,10 @@ Route::group(['prefix' => 'chuyennganh'],function (){
 //Trình độ
 Route::group(['prefix' => 'trinhdo'],function (){
     Route::get('create', function (){return view('admin.trinhdo.formcreate');})->name('createLevel');
-    Route::post('taomoi_trinhdo', 'TrinhDoController@taomoi_trinhdo')->name('insertLevel'); //Tạo nhân viên
+    Route::get('taomoi_trinhdo', 'TrinhDoController@taomoi_trinhdo')->name('insertLevel'); //Tạo nhân viên
     Route::get('danhsach_trinhdo', 'TrinhDoController@danhsach_trinhdo')->name('listLevel'); //Danh sách nhân viên
     Route::get('chinhsua_trinhdo/{IDNV}', 'TrinhDoController@chinhsua_trinhdo')->name('editLevel'); //Danh sách nhân viên
-    Route::post('capnhat_trinhdo/{IDNV}', 'TrinhDoController@capnhat_trinhdo')->name('updateLevel'); //Danh sách nhân viên
+    Route::get('capnhat_trinhdo/{IDNV}', 'TrinhDoController@capnhat_trinhdo')->name('updateLevel'); //Danh sách nhân viên
 });
 
 //Phòng ban

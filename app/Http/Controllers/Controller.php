@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CapMaNhanVienModel;
 use App\NhanvienModel;
+use Carbon\Carbon;
+use DateTimeZone;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -20,6 +22,16 @@ class Controller extends BaseController
         }
 
         return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+    }
+
+    public static function get_date(){
+        $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
+        return $now->format('Y-m-d');
+    }
+
+    public static function get_LastModify(){
+        $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
+        return $now->toDateTimeString();
     }
 
 //    public function xuly_hanhchinh(){

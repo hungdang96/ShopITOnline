@@ -10,6 +10,7 @@ class TrinhdoModel extends Model {
     protected $table        = 'trinhdo';
     protected $fillable     = [
         'TenTrinhDo',
+        'created_at',
         'LastModify'
     ];
     protected $guarded      = ['MSTrinhDo'];
