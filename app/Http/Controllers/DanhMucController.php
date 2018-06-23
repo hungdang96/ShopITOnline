@@ -64,6 +64,18 @@ class DanhMucController extends Controller
 
     //Cập nhật danh mục
     public function capnhat_danhmuc($MSDanhMuc, Request $request){
-        
+        $validator = Validator::make($request->all(),[
+            'TenDanhMuc' => 'required | unique:danhmuc',
+            'MoTa' => 'required',
+            'TrangThai' => 'required'
+        ],[
+            'TenDanhMuc.required' => 'Vui lòng nhập tên danh mục',
+            'TenDanhMuc.unique' => 'Tên danh mục',
+            'Mota.required' => 'Vui lòng nhập mô tả',
+            'TrangThai.required' => 'Vui lòng chọn trạng thái'
+        ]);
+        if($validator->fails()){
+            return ['status' => false, 'massage' => [$validator->errors()->all()]];
+        }
     }
 }
