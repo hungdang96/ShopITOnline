@@ -98,7 +98,6 @@ class NhanvienController extends Controller
             return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
 
-        $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
         $MSChucVu = $request->MSChucVu;
         $IDNV = Controller::GUID();
         $MaNV = $this->MaNV_Generator($MSChucVu);
@@ -122,7 +121,7 @@ class NhanvienController extends Controller
         $PhuCap = $request->PhuCap;
         $TrangThai = $request->TrangThai;
         $NgayTuyenDung = $request->NgayTuyenDung;
-        $LastModify = $now->toDateTimeString();
+        $LastModify = Controller::get_LastModify();
 
         NhanvienModel::create([
             'IDNV' => $IDNV,
@@ -199,7 +198,6 @@ class NhanvienController extends Controller
             return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
 
-        $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
         $MSChucVu = $request->MSChucVu;
         $MaNV = $request->MaNV;
         $TenNV = $request->TenNV;
@@ -218,7 +216,7 @@ class NhanvienController extends Controller
         $LuongCB = $request->LuongCB;
         $PhuCap = $request->PhuCap;
         $TrangThai = $request->TrangThai;
-        $LastModify = $now->toDateTimeString();
+        $LastModify = Controller::get_LastModify();
 
         NhanvienModel::where('IDNV',$IDNV)
         ->update([

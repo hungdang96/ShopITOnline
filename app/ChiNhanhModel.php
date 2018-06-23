@@ -19,6 +19,7 @@ class ChiNhanhModel extends Model
         'MaHuyen',
         'MaPhuong',
         'TrangThai',
+        'created_at',
         'LastModify'
     ];
     protected $guarded = 'MSCN';

@@ -12,9 +12,10 @@ class ChucVuModel extends Model {
         'MSChucVu',
         'TenChucVu',
         'TrangThai',
+        'created_at',
         'LastModify'
     ];
-    protected $guarded      = ['MSChucVu'];
+//    protected $guarded      = ['MSChucVu'];
 
     protected $primaryKey   = 'MSChucVu';
     public    $incrementing = false;

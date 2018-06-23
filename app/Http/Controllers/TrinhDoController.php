@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class TrinhDoController extends Controller
 {
     //Danh sách trình độ
-    public function danhsach_trinhdo(Request $request){
+    public function danhsach_trinhdo(){
         $data = TrinhdoModel::all();
         return ['status' => true, 'data' => $data];
     }

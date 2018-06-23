@@ -58,7 +58,7 @@ class ChiNhanhController extends Controller
         if($validator->fails()){
             return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
-        $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
+
         $MSCN = Controller::GUID();
         ChiNhanhModel::create([
             'MSCN' => $MSCN,
@@ -69,7 +69,8 @@ class ChiNhanhController extends Controller
             'MaHuyen' => $request->MaHuyen,
             'MaPhuong' => $request->MaPhuong,
             'TrangThai' => $request->TrangThai,
-            'LastModify' => $now->toDateTimeString()
+            'created_at' => Controller::get_date(),
+            'LastModify' => Controller::get_LastModify()
         ]);
         return ['status' => true, 'message' => 'Tạo chi nhánh thành công!'];
     }
@@ -109,7 +110,7 @@ class ChiNhanhController extends Controller
             if($validator->fails()){
                 return ['status' => false, 'message' => [$validator->errors()->all()]];
             }
-            $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
+
             $data->update([
                 'TenCN' => $request->TenCN,
                 'DiaChi' => $request->DiaChi,
@@ -118,7 +119,7 @@ class ChiNhanhController extends Controller
                 'MaHuyen' => $request->MaHuyen,
                 'MaPhuong' => $request->MaPhuong,
                 'TrangThai' => $request->TrangThai,
-                'LastModiy' => $now->toDateTimeString()
+                'LastModiy' => Controller::get_LastModify()
             ]);
             return ['status' => true, 'message' => 'Đã cập nhật chi nhánh!'];
         }
@@ -126,21 +127,4 @@ class ChiNhanhController extends Controller
             return ['status' => false, 'message' => ['Chi nhánh không tồn tại']];
         }
     }
-
-    public function xoa_chinhanh($MSCN){
-        $data = ChiNhanhModel::find($MSCN);
-        if(isset($data)){
-            $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
-            $data->update([
-                'TrangThai' => 0,
-                'LastModify' => $now->toDateTimeString()
-            ]);
-            return ['status' => true, 'message' => 'Đã xóa chi nhánh!'];
-        }
-        else{
-            return ['status' => false, 'message' => ['Không tìm thấy chi nhánh']];
-        }
-    }
-
-
 }
