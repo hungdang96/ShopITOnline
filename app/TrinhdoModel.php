@@ -9,11 +9,13 @@ class TrinhdoModel extends Model {
 
     protected $table        = 'trinhdo';
     protected $fillable     = [
+        'MSTrinhDo',
         'TenTrinhDo',
         'created_at',
-        'LastModify'
+        'LastModify',
+        'TrangThai'
     ];
-    protected $guarded      = ['MSTrinhDo'];
+//    protected $guarded      = ['MSTrinhDo'];
 
     protected $primaryKey   = 'MSTrinhDo';
     public    $incrementing = false;

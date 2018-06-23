@@ -13,14 +13,7 @@ class TrinhDoController extends Controller
 {
     //Danh sách trình độ
     public function danhsach_trinhdo(Request $request){
-        $where = [];
-        if($request->MSTrinhDo){
-            $where[] = ['MSTrinhDo', '=', $request->MSTrinhDo];
-        }
-        if($request->TenTrinhDo){
-            $where[] = ['TenTrinhDo', '=', $request->TenTrinhDo];
-        }
-        $data = TrinhdoModel::where($where)->get();
+        $data = TrinhdoModel::all();
         return ['status' => true, 'data' => $data];
     }
 
@@ -71,12 +64,14 @@ class TrinhDoController extends Controller
     public function capnhat_trinhdo($MSTrinhDo, Request $request){
         $validator = Validator::make($request->all(),[
             'TenTrinhDo' => 'required | unique:trinhdo',
-            'MSTrinhDo' => 'required | unique:trinhdo'
+            'MSTrinhDo' => 'required | unique:trinhdo',
+            'TrangThai' => 'required'
         ],[
             'MSTrinhDo.required' => 'Vui lòng nhập mã trình độ!',
             'MSTrinhDo.unique' => 'Mã trình độ đã tồn tại!',
             'TenTrinhDo.required' => 'Vui lòng nhập tên trình độ!',
-            'TenTrinhDo.unique' => 'Trình độ đã tồn tại!'
+            'TenTrinhDo.unique' => 'Trình độ đã tồn tại!',
+            'TrangThai.required' => 'Trạng thái không được để trống!'
         ]);
         if($validator->fails()){
             return ['status' => false, 'message' => [$validator->errors()->all()]];
@@ -85,12 +80,14 @@ class TrinhDoController extends Controller
         $MSTrinhDoNew = $request->MSTrinhDoNew;
         $TenTrinhDo = $request->TenTrinhDo;
         $LastModify = Controller::get_LastModify();
+        $TrangThai = $request->TrangThai;
 
         TrinhdoModel::where('MSTrinhDo', $MSTrinhDo)
             ->update([
                 'MSTrinhDo' => $MSTrinhDoNew,
                 'TenTrinhDo' => $TenTrinhDo,
-                'LastModify' => $LastModify
+                'LastModify' => $LastModify,
+                'TrangThai' => $TrangThai
             ]);
 
         NhanvienModel::where('MSTrinhDo',$MSTrinhDo)

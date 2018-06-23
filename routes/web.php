@@ -63,10 +63,10 @@ Route::group(['prefix' => 'sanpham'],function (){
 //Chuyên ngành
 Route::group(['prefix' => 'chuyennganh'],function (){
     Route::get('create', function (){return view('admin.chuyennganh.formcreate');})->name('createField');
-    Route::post('taomoi_chuyennganh', 'ChuyenNganhController@taomoi_chuyennganh')->name('insertField'); //Tạo nhân viên
+    Route::get('taomoi_chuyennganh', 'ChuyenNganhController@taomoi_chuyennganh')->name('insertField'); //Tạo nhân viên
     Route::get('danhsach_chuyennganh', 'ChuyenNganhController@danhsach_chuyennganh')->name('listField'); //Danh sách nhân viên
     Route::get('chinhsua_chuyennganh/{IDNV}', 'ChuyenNganhController@chinhsua_chuyennganh')->name('editField'); //Danh sách nhân viên
-    Route::post('capnhat_chuyennganh/{IDNV}', 'ChuyenNganhController@capnhat_chuyennganh')->name('updateField'); //Danh sách nhân viên
+    Route::get('capnhat_chuyennganh/{IDNV}', 'ChuyenNganhController@capnhat_chuyennganh')->name('updateField'); //Danh sách nhân viên
 });
 
 //Trình độ
