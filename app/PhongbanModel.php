@@ -9,11 +9,13 @@ class PhongbanModel extends Model {
 
     protected $table        = 'phongban';
     protected $fillable     = [
+        'MSPhongBan',
         'TenPhongBan',
         'TrangThai',
+        'created_at',
         'LastModify'
     ];
-    protected $guarded      = ['MSPhongBan'];
+//    protected $guarded      = ['MSPhongBan'];
 
     protected $primaryKey   = 'MSPhongBan';
     public    $incrementing = false;

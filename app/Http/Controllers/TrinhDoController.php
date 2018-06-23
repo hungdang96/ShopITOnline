@@ -77,7 +77,7 @@ class TrinhDoController extends Controller
             return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
 
-        $MSTrinhDoNew = $request->MSTrinhDoNew;
+        $MSTrinhDoNew = $request->MSTrinhDo;
         $TenTrinhDo = $request->TenTrinhDo;
         $LastModify = Controller::get_LastModify();
         $TrangThai = $request->TrangThai;

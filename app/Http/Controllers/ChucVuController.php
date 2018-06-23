@@ -19,12 +19,14 @@ class ChucVuController extends Controller
     public function taomoi_chucvu(Request $request){
         $validator = Validator::make($request->all(),[
             'MSChucVu' => 'required | unique:chucvu',
-            'TenChucVu' => 'required | unique:chucvu'
+            'TenChucVu' => 'required | unique:chucvu',
+            'TrangThai' => 'required'
         ],[
             'MSChucVu.required' => 'Vui lòng nhập mã chức vụ!',
             'MSChucVu.unique' => 'Mã chức vụ đã tồn tại!',
             'TenChucVu.required' => 'Vui lòng nhập tên chức vụ!',
-            'TenChucVu.unique' => 'Tên chức vụ đã tồn tại!'
+            'TenChucVu.unique' => 'Tên chức vụ đã tồn tại!',
+            'TrangThai.required' => 'Vui lòng chọn trạng thái!'
         ]);
         if($validator->fails()){
             return ['status' => false, 'message' => [$validator->errors()->all()]];
@@ -32,12 +34,14 @@ class ChucVuController extends Controller
 
         $MSChucVu = $request->MSChucVu;
         $TenChucVu = $request->TenChucVu;
+        $TrangThai = $request->TrangThai;
         $LastModify = Controller::get_LastModify();
         $created_at = Controller::get_date();
 
         ChucVuModel::create([
             'MSChucVu' => $MSChucVu,
             'TenChucVu' => $TenChucVu,
+            'TrangThai' => $TrangThai,
             'created_at' => $created_at,
             'LastModify' => $LastModify
         ]);
@@ -74,7 +78,7 @@ class ChucVuController extends Controller
             return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
 
-        $MSChucVuNew = $request->MSChucVuNew;
+        $MSChucVuNew = $request->MSChucVu;
         $TenChucVu = $request->TenChucVu;
         $TrangThai = $request->TrangThai;
         $LastModify = Controller::get_LastModify();
