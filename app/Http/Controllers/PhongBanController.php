@@ -20,12 +20,14 @@ class PhongBanController extends Controller
     public function taomoi_phongban(Request $request){
         $validator = Validator::make($request->all(),[
             'MSPhongBan' => 'required | unique:phongban',
-            'TenPhongBan' => 'required | unique:phongban'
+            'TenPhongBan' => 'required | unique:phongban',
+            'TrangThai' => 'required'
         ],[
             'MSPhongBan.required' => 'Vui lòng nhập mã phòng ban!',
             'MSPhongBan.unique' => 'Mã phòng ban đã tồn tại!',
             'TenPhongBan.required' => 'Vui lòng nhập tên phòng ban!',
-            'TenPhongBan.unique' => 'Tên phòng ban đã tồn tại!'
+            'TenPhongBan.unique' => 'Tên phòng ban đã tồn tại!',
+            'TrangThai.required' => 'Vui lòng chọn trạng thái!'
         ]);
         if($validator->fails()){
             return ['status' => false, 'message' => [$validator->errors()->all()]];
@@ -33,12 +35,14 @@ class PhongBanController extends Controller
 
         $MSPhongBan = $request->MSPhongBan;
         $TenPhongBan = $request->TenPhongBan;
+        $TrangThai = $request->TrangThai;
         $created_at = Controller::get_date();
         $LastModify = Controller::get_LastModify();
 
         PhongbanModel::create([
             'MSPhongBan' => $MSPhongBan,
             'TenPhongBan' => $TenPhongBan,
+            'TrangThai' => $TrangThai,
             'created_at' => $created_at,
             'LastModify' => $LastModify
         ]);

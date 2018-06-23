@@ -21,12 +21,14 @@ class TrinhDoController extends Controller
     public function taomoi_trinhdo(Request $request){
         $validator = Validator::make($request->all(),[
             'TenTrinhDo' => 'required | unique:trinhdo',
-            'MSTrinhDo' => 'required | unique:trinhdo'
+            'MSTrinhDo' => 'required | unique:trinhdo',
+            'TrangThai' => 'required'
         ],[
             'MSTrinhDo.required' => 'Vui lòng nhập mã trình độ!',
             'MSTrinhDo.unique' => 'Mã trình độ đã tồn tại!',
             'TenTrinhDo.required' => 'Vui lòng nhập tên trình độ!',
-            'TenTrinhDo.unique' => 'Trình độ đã tồn tại!'
+            'TenTrinhDo.unique' => 'Trình độ đã tồn tại!',
+            'TrangThai.required' => 'Vui lòng chọn trạng thái'
         ]);
         if($validator->fails()){
             return ['status' => false, 'message' => [$validator->errors()->all()]];
@@ -35,12 +37,14 @@ class TrinhDoController extends Controller
         $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
         $MSTrinhDo = $request->MSTrinhDo;
         $TenTrinhDo = $request->TenTrinhDo;
+        $TrangThai = $request->TrangThai;
         $created_at = $now->format('Y-m-d');
         $LastModify = $now->toDateTimeString();
 
         TrinhdoModel::create([
             'MSTrinhDo' => $MSTrinhDo,
             'TenTrinhDo' => $TenTrinhDo,
+            'TrangThai' => $TrangThai,
             'created_at' => $created_at,
             'LastModify' => $LastModify
         ]);
