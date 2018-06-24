@@ -77,5 +77,6 @@ class DanhMucController extends Controller
         if($validator->fails()){
             return ['status' => false, 'massage' => [$validator->errors()->all()]];
         }
+
     }
 }
