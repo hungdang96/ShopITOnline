@@ -33,15 +33,6 @@ Route::group(['prefix' => 'chinhanh'],function (){
     Route::post('capnhat_chinhanh/{IDNV}', 'ChiNhanhController@taomoi_chinhanh')->name('updateStaff'); //Danh sách nhân viên
 });
 
-//Nhà cung cấp
-Route::group(['prefix' => 'nhacungcap'],function (){
-    Route::get('create', function (){return view('admin.chinhanh.formcreate');})->name('createSupplier');
-    Route::get('taomoi_nhacungcap', 'NhaCungCapController@taomoi_nhacungcap')->name('insertSupplier'); //Tạo nhân viên
-    Route::get('danhsach_nhacungcap', 'NhaCungCapController@danhsach_nhacungcap')->name('listSupplier'); //Danh sách nhân viên
-    Route::get('chinhsua_nhacungcap/{IDNV}', 'NhaCungCapController@chinhsua_nhacungcap')->name('editSupplier'); //Danh sách nhân viên
-    Route::post('capnhat_nhacungcap/{IDNV}', 'NhaCungCapController@capnhat_nhacungcap')->name('updateSupplier'); //Danh sách nhân viên
-});
-
 //Khách hàng
 Route::group(['prefix' => 'khachhang'],function (){
     Route::get('create', function (){return view('admin.khachhang.formcreate');})->name('createCustomer');
@@ -155,10 +146,3 @@ Route::group(['prefix' => 'dathang'],function (){
     Route::get('chinhsua_dondathang/{IDNV}', 'XuLyDatHangController@chinhsua_dondathang')->name('editOrder'); //Danh sách nhân viên
     Route::post('capnhat_dondathang/{IDNV}', 'XuLyDatHangController@capnhat_dondathang')->name('updateOrder'); //Danh sách nhân viên
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
