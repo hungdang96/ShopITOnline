@@ -56,7 +56,7 @@ class ChiNhanhController extends Controller
             'MaPhuong.required' => 'Vui lòng chọn xã/phường!'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => $validator->errors()->all()];
+            return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
 
         $MSCN = Controller::GUID();
@@ -108,7 +108,7 @@ class ChiNhanhController extends Controller
                 'MaPhuong.required' => 'Vui lòng chọn xã/phường!'
             ]);
             if($validator->fails()){
-                return ['status' => false, 'message' => $validator->errors()->all()];
+                return ['status' => false, 'message' => [$validator->errors()->all()]];
             }
 
             $data->update([

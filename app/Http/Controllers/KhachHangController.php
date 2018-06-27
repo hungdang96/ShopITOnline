@@ -56,7 +56,7 @@ class KhachHangController extends Controller
             'MaPhuong.required' => 'Vui lòng chọn phường/xã',
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => $validator->errors()->all()];
+            return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
         $MSKH = Controller::GUID();
         $TenKH = $request->TenKH;
@@ -138,7 +138,7 @@ class KhachHangController extends Controller
             'MaPhuong.required' => 'Vui lòng chọn phường/xã',
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => $validator->errors()->all()];
+            return ['status' => false, 'message' => [$validator->errors()->all()]];
         }
 
         $TenKH = $request->TenKH;
