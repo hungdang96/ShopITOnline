@@ -9,6 +9,8 @@ class NhacungcapModel extends Model {
 
     protected $table        = 'nhacungcap';
     protected $fillable     = [
+        'id',
+        'MSNCC',
         'TenNCC',
         'DiaChi',
         'MaTinh',
@@ -19,10 +21,11 @@ class NhacungcapModel extends Model {
         'FAX',
         'SoTKNganHang',
         'TenNganHang',
-        'TrangThai'
+        'TrangThai',
+        'LastModify'
     ];
-    protected $guarded      = ['MSNCC'];
+    protected $guarded      = ['id'];
 
-    protected $primaryKey   = 'MSNCC';
+    protected $primaryKey   = 'id';
     public    $incrementing = false;
 }

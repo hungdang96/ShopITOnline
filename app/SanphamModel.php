@@ -11,7 +11,7 @@ class SanphamModel extends Model {
     protected $fillable     = [
         'MSSP',
         'MaMac',
-        'TenHH',
+        'TenSP',
         'SoLo',
         'MoTa',
         'PathHinhAnh',
@@ -30,6 +30,7 @@ class SanphamModel extends Model {
         'PhanTramCK',
         'TrangThai',
         'MSCTKM',
+        'created_at',
         'LastModify'
     ];
 //    protected $guarded      = ['MaMac'];

@@ -55,7 +55,7 @@ class DanhMucController extends Controller
         $data = DanhmucModel::find($MSDanhMuc);
         if(isset($data)){
             return ['status' => true, 'data' => $data];
-//            return view('admin.danhmuc.editCategory',compact('data', $data));
+//            return view('admin.danhmuc.editCategory',compact($data));
         }
         else{
             return ['status' => false, 'message' => ['Danh mục không tồn tại!']];
@@ -78,5 +78,20 @@ class DanhMucController extends Controller
             return ['status' => false, 'massage' => [$validator->errors()->all()]];
         }
 
+        $TenDanhMuc = $request->TenDanhMuc;
+        $MoTa = $request->MoTa;
+        $DanhMucCha = $request->DanhMucCha;
+        $TrangThai = $request->TrangThai;
+        $LastModify = Controller::get_LastModify();
+
+        DanhmucModel::where('MSDanhMuc', $MSDanhMuc)
+            ->update([
+                'TenDanhMuc' => $TenDanhMuc,
+                'MoTa' => $MoTa,
+                'DanhMucCha' => $DanhMucCha,
+                'TrangThai' => $TrangThai,
+                'LastModify' => $LastModify
+            ]);
+        return ['status' => true, 'message' => 'Đã cập nhật danh mục thành công!'];
     }
 }

@@ -9,6 +9,7 @@ class KhachhangModel extends Model {
 
     protected $table        = 'khachhang';
     protected $fillable     = [
+        'MSKH',
         'TenKH',
         'UserID',
         'CMND',
@@ -22,7 +23,10 @@ class KhachhangModel extends Model {
         'MaPhuong',
         'MaVung',
         'GhiChu',
-        'DiemTichLuy'
+        'DiemTichLuy',
+        'TrangThai',
+        'created_at',
+        'LastModify'
     ];
     protected $guarded      = ['MSKH'];
 
