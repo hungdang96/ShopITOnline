@@ -146,6 +146,8 @@ Route::group(['prefix' => 'dathang'],function (){
     Route::get('chinhsua_dondathang/{IDNV}', 'XuLyDatHangController@chinhsua_dondathang')->name('editOrder'); //Danh sách nhân viên
     Route::post('capnhat_dondathang/{IDNV}', 'XuLyDatHangController@capnhat_dondathang')->name('updateOrder'); //Danh sách nhân viên
 });
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
