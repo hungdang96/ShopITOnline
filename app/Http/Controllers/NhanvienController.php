@@ -95,7 +95,7 @@ class NhanvienController extends Controller
             'NgayTuyenDung.required' => 'Vui lòng nhập ngày tuyển dụng!'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];
         }
 
         $MSChucVu = $request->MSChucVu;
@@ -195,7 +195,7 @@ class NhanvienController extends Controller
             'MSCN.required' => 'Mã số chi nhánh không được để trống!',
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];
         }
 
         $MSChucVu = $request->MSChucVu;

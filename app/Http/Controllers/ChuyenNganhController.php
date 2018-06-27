@@ -29,7 +29,7 @@ class ChuyenNganhController extends Controller
             'TrangThai.required' => 'Vui lòng chọn trạng thái!'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
         $MSChuyenNganh = $request->MSChuyenNganh;
         $TenChuyenNganh = $request->TenChuyenNganh;
@@ -73,7 +73,7 @@ class ChuyenNganhController extends Controller
             'TrangThai.required' => 'Vui lòng chọn trạng thái'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
 
         $MSChuyenNganhNew = $request->MSChuyenNganh;

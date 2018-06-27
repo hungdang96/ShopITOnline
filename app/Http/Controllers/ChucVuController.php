@@ -29,7 +29,7 @@ class ChucVuController extends Controller
             'TrangThai.required' => 'Vui lòng chọn trạng thái!'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
 
         $MSChucVu = $request->MSChucVu;
@@ -75,7 +75,7 @@ class ChucVuController extends Controller
             'TrangThai.required' => 'Vui lòng chọn trạng thái!'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
 
         $MSChucVuNew = $request->MSChucVu;

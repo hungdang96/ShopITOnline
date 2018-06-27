@@ -58,7 +58,7 @@ class NhaCungCapController extends Controller
             'TenNganHang.required' => 'Vui lòng nhập tên tài khoản ngân hàng'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
 
         $id = Controller::GUID();
@@ -136,7 +136,7 @@ class NhaCungCapController extends Controller
             'TenNganHang.required' => 'Vui lòng nhập tên tài khoản ngân hàng'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
 
         $MSNCC = $request->MSNCC;

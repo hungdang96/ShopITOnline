@@ -73,7 +73,7 @@ class SanPhamController extends Controller
             'PhanTramCK.required' => 'Vui lòng nhập phần trăm chiết khấu!'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
         
     }

@@ -31,7 +31,7 @@ class TrinhDoController extends Controller
             'TrangThai.required' => 'Vui lòng chọn trạng thái'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
 
         $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
@@ -78,7 +78,7 @@ class TrinhDoController extends Controller
             'TrangThai.required' => 'Trạng thái không được để trống!'
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
 
         $MSTrinhDoNew = $request->MSTrinhDo;

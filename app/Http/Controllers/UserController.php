@@ -38,7 +38,7 @@ class UserController extends Controller
             'password.required' => 'Vui lòng điền mật khẩu!',
         ]);
         if($validator->fails()){
-            return ['status' => false, 'message' => [$validator->errors()->all()]];
+            return ['status' => false, 'message' => $validator->errors()->all()];;
         }
         $now = Carbon::now(new DateTimeZone('Asia/Ho_Chi_Minh'));
         $UserID = Controller::GUID();
