@@ -1,0 +1,42 @@
+.line-dropdown{
+    border-top: 1px solid rgba(0, 0, 0, 0.24) !important;
+}
+.dropdown-item:hover{
+    background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(64, 64, 64);
+}
+.btco-menu li > a {
+    padding: 10px 15px;
+    color: #000;
+
+}
+
+.btco-menu .active a:focus,
+.btco-menu li a:focus ,
+.navbar > .show > a:focus{
+    background: transparent;
+    outline: 0;
+}
+
+
+.dropdown-menu .show > .dropdown-toggle::after{
+    transform: rotate(-90deg);
+}
+
+.dropdown-toggle-fix::after{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+    transform: rotate(-90deg) !important;
+}
+

@@ -32,6 +32,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'token',
         'remember_token',
     ];
+
+    protected $keyType = 'varchar';
+    protected $primaryKey = 'UserID';
 }

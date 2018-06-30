@@ -13,7 +13,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+Route::get('/',function (){
+    return view('home');
+})->name('welcome');
 
 //Nhân viên
 Route::group(['prefix' => 'nhanvien'], function (){
