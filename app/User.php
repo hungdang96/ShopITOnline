@@ -18,6 +18,7 @@ class User extends Authenticatable
         'UserID',
         'email',
         'password',
+        'name',
         'roleid',
         'token',
         'remember_token',
